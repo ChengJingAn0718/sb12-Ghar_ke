@@ -190,7 +190,7 @@ const Scene = React.forwardRef(({ nextFunc, _baseGeo, _geo }, ref) => {
         },
         sceneStart: () => {
             baseObject.current.className = 'aniObject'
-            timerList[0] = setTimeout(activeBtnFunc, 5000);
+            timerList[0] = setTimeout(activeBtnFunc, 2500);
 
             audioList.bodyAudio1.src = getAudioPath('common', 'review0')
             audioList.bodyAudio2.src = getAudioPath('common', 'review1')

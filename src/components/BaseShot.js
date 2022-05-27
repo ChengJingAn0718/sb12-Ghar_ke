@@ -50,13 +50,13 @@ Array.from(Array(13).keys()).map(value => {
     subAudioList.push(new loadSound('word/' + soundPrefix + audioNameList[value]))
 })
 
-backAudio.volume = 0.15;
+backAudio.volume = 0.08;
 
 wooAudio.volume = 0.8;
 successAudio.volume = 0.4;
 
-yeahAudio.volumn = 0.01
-clapAudio.volumn = 0.05
+yeahAudio.volume = 0.4
+clapAudio.volume = 0.8
 buzzAudio.volume = 0.3
 tingAudio.volume = 1
 

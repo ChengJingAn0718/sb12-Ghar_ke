@@ -30,14 +30,12 @@ export default function Scene({ nextFunc, _geo, _baseGeo }) {
                 replayBtn.current.className = 'aniObject'
 
                 timerList[1] = setTimeout(() => {
-                    audioList.backAudio.volume = 0.05;
+                    audioList.backAudio.volume = 0.04;
 
                     audioList.replayAudio.play().catch(error => { });
 
                     timerList[2] = setTimeout(() => {
-                        audioList.backAudio.volume = 0.15;
-
-
+                        audioList.backAudio.volume = 0.08;
                     }, audioList.replayAudio.duration * 1000);
                 }, 5000);
             }, audioList.bodyAudio1.duration * 1000 - 500);
@@ -62,7 +60,7 @@ export default function Scene({ nextFunc, _geo, _baseGeo }) {
             audioList.yeahAudio.currentTime = 0;
             audioList.replayAudio.currentTime = 0;
 
-            audioList.backAudio.volume = 0.15;
+            audioList.backAudio.volume = 0.08;
 
         }
     }, [])

@@ -113,6 +113,8 @@ const Scene = React.forwardRef(({ nextFunc, clickedFunc, _geo }, ref) => {
         audioList.bodyAudio2.currentTime = 0;
         audioList.bodyAudio1.currentTime = 0;
 
+        audioList.buzzAudio.pause()
+
         iconRefList[num].current.setStyle({
             transition: '0.5s',
             transform: 'scale(0.7)'
@@ -187,9 +189,10 @@ const Scene = React.forwardRef(({ nextFunc, clickedFunc, _geo }, ref) => {
             }
             if (correctNum == answerList.length) {
                 audioList.clapAudio.play();
+                // audioList.tingAudio.play()
+
                 setTimeout(() => {
                     clickedFunc(1)
-
                 }, 1000);
 
                 setTimeout(() => {
@@ -200,14 +203,13 @@ const Scene = React.forwardRef(({ nextFunc, clickedFunc, _geo }, ref) => {
                 audioList.tingAudio.currentTime = 0
                 audioList.tingAudio.play();
                 startRepeatAudio();
-
-
             }
         }
         else {
             //wrong function...
             audioList.buzzAudio.currentTime = 0;
             audioList.buzzAudio.play();
+
             setTimeout(() => {
                 clickedFunc(0)
             }, 500);
