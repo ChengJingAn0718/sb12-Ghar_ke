@@ -61,7 +61,8 @@ const App = React.forwardRef(({ geo, _startTransition, baseGeo, bgLoaded }, ref)
   }
 
   function loadFunc() {
-    sceneList[currentSceneNum + 1].current.sceneLoad()
+    if (currentSceneNum > 0)
+      sceneList[currentSceneNum + 1].current.sceneLoad()
   }
 
   function loadScene() {
@@ -76,7 +77,7 @@ const App = React.forwardRef(({ geo, _startTransition, baseGeo, bgLoaded }, ref)
     setTimeout(() => {
       sceneList[1].current.sceneLoad()
       sceneList[0].current.sceneLoad()
-    }, 100);
+    }, 500);
 
     musicRef.current.setClass('hideObject')
 
