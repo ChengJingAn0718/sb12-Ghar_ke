@@ -187,9 +187,12 @@ const Scene = React.forwardRef(({ nextFunc, clickedFunc, _geo }, ref) => {
                     imgRefList[correctNum].current.setClass('appear')
                 }, 1500);
             }
+            
+            audioList.tingAudio.currentTime = 0
+            audioList.tingAudio.play();
+
             if (correctNum == answerList.length) {
-                audioList.clapAudio.play();
-                // audioList.tingAudio.play()
+                audioList.tingAudio.play()
 
                 setTimeout(() => {
                     clickedFunc(1)
@@ -200,8 +203,7 @@ const Scene = React.forwardRef(({ nextFunc, clickedFunc, _geo }, ref) => {
                 }, 5500);
             }
             else {
-                audioList.tingAudio.currentTime = 0
-                audioList.tingAudio.play();
+
                 startRepeatAudio();
             }
         }
