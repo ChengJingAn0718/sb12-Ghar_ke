@@ -178,11 +178,7 @@ const Scene = React.forwardRef(({ nextFunc, clickedFunc, _geo }, ref) => {
 
         let randomNumber = Math.floor(Math.random() * defaultRandomList[currentNum].length);
 
-        defaultRandomList[currentNum][randomNumber].map(value => {
-            answerList.push(value)
-        })
-
-
+        answerList = defaultRandomList[currentNum][randomNumber]
     }
 
     const judgeFunc = (num) => {
