@@ -160,6 +160,28 @@ const Scene = React.forwardRef(({ nextFunc, clickedFunc, _geo }, ref) => {
             }
         }
 
+        const defaultRandomList = [
+            [
+                [1, 0]
+            ],
+            [
+                [2, 0, 1], [1, 2, 0]
+            ],
+            [
+                [3, 2, 1, 0], [3, 2, 0, 1],
+                [1, 0, 3, 2], [1, 0, 2, 3],
+                [2, 3, 1, 0], [2, 3, 0, 1]
+            ]
+        ]
+
+        let currentNum = needLength - 2
+
+        let randomNumber = Math.floor(Math.random() * defaultRandomList[currentNum].length);
+
+        defaultRandomList[currentNum][randomNumber].map(value => {
+            answerList.push(value)
+        })
+
 
     }
 
@@ -187,7 +209,7 @@ const Scene = React.forwardRef(({ nextFunc, clickedFunc, _geo }, ref) => {
                     imgRefList[correctNum].current.setClass('appear')
                 }, 1500);
             }
-            
+
             audioList.tingAudio.currentTime = 0
             audioList.tingAudio.play();
 
