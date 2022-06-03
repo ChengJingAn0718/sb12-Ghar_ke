@@ -32,7 +32,7 @@ const App = React.forwardRef(({ geo, _startTransition, baseGeo, bgLoaded }, ref)
 
   useEffect(
     () => {
-      musicRef.current.className = 'hideObject'
+      musicRef.current.className =   'hideObject'
 
       sceneList[1].current.sceneLoad()
       sceneList[0].current.sceneLoad()
