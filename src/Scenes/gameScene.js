@@ -44,6 +44,7 @@ const Scene = React.forwardRef(({ nextFunc, _baseGeo, _geo, loadFunc }, ref) => 
         sceneStart: () => {
             parentRef.current.className = 'aniObject'
             optionRef.current.startScene()
+            setRepeatType(1)
         },
         sceneEnd: () => {
             setSceneLoad(false)

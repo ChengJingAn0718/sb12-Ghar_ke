@@ -1,8 +1,8 @@
 import React, { useContext, useRef, useEffect } from 'react';
 import "../stylesheets/styles.css";
 import { UserContext } from "../components/BaseShot"
-import {  getAudioPath } from "../components/CommonFunctions"
-import { prePathUrl } from "../components/CommonFunctions";
+import {  getAudioPath, setRepeatAudio, startRepeatAudio, stopRepeatAudio } from "../components/CommonFunctions"
+import { prePathUrl , setRepeatType} from "../components/CommonFunctions";
 
 let timerList = []
 
@@ -13,6 +13,10 @@ export default function Scene({ nextFunc, _geo, _baseGeo }) {
     useEffect(() => {
 
         audioList.bodyAudio1.src = getAudioPath('common', 'excellent')
+        setRepeatAudio(audioList.replayAudio)
+
+        setRepeatType(2)
+
         timerList[0] = setTimeout(() => {
 
             audioList.bodyAudio1.play();
@@ -30,12 +34,13 @@ export default function Scene({ nextFunc, _geo, _baseGeo }) {
                 replayBtn.current.className = 'aniObject'
 
                 timerList[1] = setTimeout(() => {
-                    audioList.backAudio.volume = 0.04;
+                    audioList.backAudio.volume = 0.02;
 
                     audioList.replayAudio.play().catch(error => { });
+                    startRepeatAudio();
 
                     timerList[2] = setTimeout(() => {
-                        audioList.backAudio.volume = 0.08;
+                        audioList.backAudio.volume = 0.04;
                     }, audioList.replayAudio.duration * 1000);
                 }, 5000);
             }, audioList.bodyAudio1.duration * 1000 - 500);
@@ -45,6 +50,8 @@ export default function Scene({ nextFunc, _geo, _baseGeo }) {
 
 
         return () => {
+
+            stopRepeatAudio();
 
             timerList.map(timer => {
                 clearTimeout(timer)
@@ -60,7 +67,7 @@ export default function Scene({ nextFunc, _geo, _baseGeo }) {
             audioList.yeahAudio.currentTime = 0;
             audioList.replayAudio.currentTime = 0;
 
-            audioList.backAudio.volume = 0.08;
+            audioList.backAudio.volume = 0.04;
 
         }
     }, [])
