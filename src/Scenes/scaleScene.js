@@ -32,7 +32,7 @@ const Scene = React.forwardRef(({ nextFunc, _baseGeo, loadFunc, _startTransition
         { x: 0.0, y: 0.1, s: 1.2 },
         { x: 1.1, y: -0.4, s: 3.2 },
         { x: 0.7, y: -0.35, s: 3.4 },
-        { x: -0.3, y: -0.3, s: 1.6 }, //7
+        { x: -0.8, y: -0.8, s: 2.6 }, //7
         { x: 0.65, y: -0.43, s: 2.4 },
         { x: 0.2, y: -0.43, s: 2.4 },
         { x: 0.55, y: -0.7, s: 2.4 },
@@ -52,7 +52,7 @@ const Scene = React.forwardRef(({ nextFunc, _baseGeo, loadFunc, _startTransition
         { l: 0.7, t: 0.42 },
         { l: 0.45, t: 0.72 },
         { l: 0.55, t: 0.72 },
-        { l: 1, t: 0.75 }, //7
+        { l: 0.88, t: 0.75 }, //7
         { l: 0.45, t: 0.72 },
         { l: 0.6, t: 0.75 },
         { l: 0.45, t: 0.85 },
@@ -174,6 +174,7 @@ const Scene = React.forwardRef(({ nextFunc, _baseGeo, loadFunc, _startTransition
             currentImage.current.style.transition = '0.5s'
 
             baseObject.current.className = 'aniObject'
+
 
             setTimeout(() => {
 
