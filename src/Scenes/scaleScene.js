@@ -175,7 +175,7 @@ const Scene = React.forwardRef(({ nextFunc, _baseGeo, loadFunc, _startTransition
 
             baseObject.current.className = 'aniObject'
 
-
+            
             setTimeout(() => {
 
                 audioList.bodyAudio1.play().catch(error => { })
