@@ -46,8 +46,8 @@ const Scene = React.forwardRef(({ nextFunc, _baseGeo, _geo, loadFunc }, ref) => 
             optionRef.current.startScene()
             setRepeatType(1)
 
-            setExtraVolume(audioList.commonAudio2, 2)
-            setExtraVolume(audioList.commonAudio1, 2)
+            setExtraVolume(audioList.commonAudio2, 3)
+            setExtraVolume(audioList.commonAudio1, 3)
 
         },
         sceneEnd: () => {
