@@ -92,7 +92,7 @@ const Scene = React.forwardRef(({ nextFunc, _baseGeo, _geo, loadFunc }, ref) => 
 
         if (stepCount == 0)
             audioList.commonAudio2.play();
-            
+
         startRepeatAudio()
     }
 
@@ -183,6 +183,7 @@ const Scene = React.forwardRef(({ nextFunc, _baseGeo, _geo, loadFunc }, ref) => 
 
         setRepeatAudio(audioList.commonAudio2)
         setPrimaryAudio(audioList.bodyAudio1)
+        setRepeatType(1)
 
         setTimeout(() => {
             secondPartRef.current.className = 'aniObject'
