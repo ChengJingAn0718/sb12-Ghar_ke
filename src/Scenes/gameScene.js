@@ -92,6 +92,7 @@ const Scene = React.forwardRef(({ nextFunc, _baseGeo, _geo, loadFunc }, ref) => 
 
         if (stepCount == 0)
             audioList.commonAudio2.play();
+            
         startRepeatAudio()
     }
 
