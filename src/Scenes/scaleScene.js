@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useContext, useState } from 'react';
 import "../stylesheets/styles.css";
 import BaseImage from '../components/BaseImage';
 import { UserContext } from '../components/BaseShot';
-import { getAudioPath, prePathUrl } from "../components/CommonFunctions";
+import { getAudioPath, prePathUrl, setExtraVolume } from "../components/CommonFunctions";
 
 let currentMaskNum = 0;
 const Scene = React.forwardRef(({ nextFunc, _baseGeo, loadFunc, _startTransition, bgLoaded }, ref) => {
@@ -148,7 +148,7 @@ const Scene = React.forwardRef(({ nextFunc, _baseGeo, loadFunc, _startTransition
                             else {
                                 currentMaskNum++;
 
-                                blackWhiteObject.current.style.WebkitMaskImage = 'url("' + prePathUrl() + 'images/intro/Intro0' + (currentMaskNum + 4) + '.png")'
+                                blackWhiteObject.current.style.WebkitMaskImage = 'url("' + prePathUrl() + 'images/intro/intro0' + (currentMaskNum + 4) + '.png")'
                                 blackWhiteObject.current.className = 'hide'
                                 setTimeout(() => {
                                     showIndividualImage()
@@ -175,6 +175,9 @@ const Scene = React.forwardRef(({ nextFunc, _baseGeo, loadFunc, _startTransition
 
             baseObject.current.className = 'aniObject'
 
+            setExtraVolume(audioList.bodyAudio1, 2)
+            setExtraVolume(audioList.bodyAudio2, 2)
+            setExtraVolume(audioList.bodyAudio3, 2)
             
             setTimeout(() => {
 
@@ -225,7 +228,7 @@ const Scene = React.forwardRef(({ nextFunc, _baseGeo, loadFunc, _startTransition
 
                             }}
                             onLoad={bgLoaded}
-                            src={prePathUrl() + "images/intro/Intro01.png"}
+                            src={prePathUrl() + "images/intro/intro01.png"}
                         />
                     </div>
 
@@ -236,7 +239,7 @@ const Scene = React.forwardRef(({ nextFunc, _baseGeo, loadFunc, _startTransition
                             , height: '100%',
                             left: '0%',
                             top: '0%',
-                            WebkitMaskImage: 'url("' + prePathUrl() + 'images/intro/Intro0' + (currentMaskNum + 4) + '.png")',
+                            WebkitMaskImage: 'url("' + prePathUrl() + 'images/intro/intro0' + (currentMaskNum + 4) + '.png")',
                             WebkitMaskSize: '100% 100%',
                             WebkitMaskRepeat: "no-repeat"
                         }} >
@@ -249,7 +252,7 @@ const Scene = React.forwardRef(({ nextFunc, _baseGeo, loadFunc, _startTransition
                                 left: '0%',
                                 top: '0%',
                             }}
-                            src={prePathUrl() + "images/intro/Intro.png"}
+                            src={prePathUrl() + "images/intro/intro.png"}
                         />
 
                     </div>
@@ -270,7 +273,7 @@ const Scene = React.forwardRef(({ nextFunc, _baseGeo, loadFunc, _startTransition
                                 left: '0%',
                                 top: '0%',
                             }}
-                            src={prePathUrl() + "images/intro/Intro.png"}
+                            src={prePathUrl() + "images/intro/intro.png"}
 
                         />
                     </div>

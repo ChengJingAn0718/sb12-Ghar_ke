@@ -39,7 +39,6 @@ let commonAudio2 = new loadSound('common/common2');
 let commonAudio3 = new loadSound('common/common3');
 
 let subAudioList = []
-let soundPrefix = 'Episode_12_Ghar_ke_Aas_Paas_ki_Jagah_'
 const audioNameList = [
     '54', '64_darwaza', '58_1_Khidhiya', '58_2_Pakshi', '58_Badal', '59',
     '60_Bagicha', '60_2_Maali', '61_Akhbar', '61_Jhula', '62_dada_dadi',
@@ -47,7 +46,7 @@ const audioNameList = [
 ]
 
 Array.from(Array(13).keys()).map(value => {
-    subAudioList.push(new loadSound('word/' + soundPrefix + audioNameList[value]))
+    subAudioList.push(new loadSound('word/' + audioNameList[value]))
 })
 
 backAudio.volume = 0.04;

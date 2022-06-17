@@ -16,13 +16,9 @@ export function initialAudio(audioList) {
     }
 }
 
-let soundPrefix = 'Episode_12_Ghar_ke_Aas_Paas_ki_Jagah_'
 
 export function getAudioPath(folderName, fileNum) {
-    if (folderName == 'common')
-        return prePathUrl() + "sounds/main/" + folderName + '/' + fileNum + '.mp3';
-    else
-        return prePathUrl() + "sounds/main/" + folderName + '/' + soundPrefix + fileNum + '.mp3';
+    return prePathUrl() + "sounds/main/" + folderName + '/' + fileNum + '.mp3';
 }
 
 export function getMaskStyle(info) {

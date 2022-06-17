@@ -45,6 +45,10 @@ const Scene = React.forwardRef(({ nextFunc, _baseGeo, _geo, loadFunc }, ref) => 
             parentRef.current.className = 'aniObject'
             optionRef.current.startScene()
             setRepeatType(1)
+
+            setExtraVolume(audioList.commonAudio2, 2)
+            setExtraVolume(audioList.commonAudio1, 2)
+
         },
         sceneEnd: () => {
             setSceneLoad(false)
@@ -77,12 +81,11 @@ const Scene = React.forwardRef(({ nextFunc, _baseGeo, _geo, loadFunc }, ref) => 
 
     const showControlFunc = () => {
 
-        blackWhiteObject.current.style.WebkitMaskImage = 'url("' + prePathUrl() + 'images/Questions/q' + (stepCount + 3) + '/mask.png")'
-        firstBGRef.current.setUrl('Questions/q' + (stepCount + 3) + '/q0.png');
+        blackWhiteObject.current.style.WebkitMaskImage = 'url("' + prePathUrl() + 'images/questions/q' + (stepCount + 3) + '/m.png")'
 
         aniImageList.map((image, index) => {
             if (index < 3)
-                image.current.setUrl('Questions/q' + (stepCount + 3) + '/q' + (index + 1) + '.png')
+                image.current.setUrl('questions/q' + (stepCount + 3) + '/' + (index + 1) + '.png')
         })
 
         buttonRefs.current.className = 'appear'
@@ -98,11 +101,11 @@ const Scene = React.forwardRef(({ nextFunc, _baseGeo, _geo, loadFunc }, ref) => 
         aniImageList[3].current.setClass('hide')
         blackWhiteObject.current.className = 'show halfOpacity'
         setTimeout(() => {
-            aniImageList[3].current.setUrl('Questions/q' + (stepCount + 2) + '/q4.png')
+            aniImageList[3].current.setUrl('questions/q' + (stepCount + 2) + '/4.png')
         }, 400);
 
         if (stepCount < audioNameList.length) {
-            audioList.bodyAudio1.src = getAudioPath('questions/Q' + (stepCount + 2),
+            audioList.bodyAudio1.src = getAudioPath('questions/q' + (stepCount + 2),
                 audioNameList[stepCount][0]) //question
         }
 
@@ -135,7 +138,7 @@ const Scene = React.forwardRef(({ nextFunc, _baseGeo, _geo, loadFunc }, ref) => 
             stepCount++
 
             if (stepCount < audioNameList.length) {
-                audioList.bodyAudio2.src = getAudioPath('questions/Q' + (stepCount + 2), audioNameList[stepCount][1]) //answer
+                audioList.bodyAudio2.src = getAudioPath('questions/q' + (stepCount + 2), audioNameList[stepCount][1]) //answer
             }
 
             setTimeout(() => {
@@ -201,8 +204,8 @@ const Scene = React.forwardRef(({ nextFunc, _baseGeo, _geo, loadFunc }, ref) => 
 
         }, 500);
 
-        audioList.bodyAudio1.src = getAudioPath('questions/Q' + (stepCount + 2), audioNameList[stepCount][0]) //question
-        audioList.bodyAudio2.src = getAudioPath('questions/Q' + (stepCount + 2), audioNameList[stepCount][1])  //answer
+        audioList.bodyAudio1.src = getAudioPath('questions/q' + (stepCount + 2), audioNameList[stepCount][0]) //question
+        audioList.bodyAudio2.src = getAudioPath('questions/q' + (stepCount + 2), audioNameList[stepCount][1])  //answer
     }
 
 
@@ -236,18 +239,18 @@ const Scene = React.forwardRef(({ nextFunc, _baseGeo, _geo, loadFunc }, ref) => 
                                         , cursor: "pointer",
                                     }}>
                                     <BaseImage
-                                        url={'Icon/SB13_Progress_Bar_Gray.png'}
+                                        url={'icon/sb13_progress_bar_gray.png'}
                                     />
                                     <BaseImage
                                         ref={starRefs[8 - value]}
-                                        url={'Icon/SB13_Progress_Bar.png'}
+                                        url={'icon/sb13_progress_bar.png'}
                                         className='hideObject'
                                     />
                                 </div>)
                         }
                     </div>
 
-                    {setSecondShow &&
+                    {isSecondShow &&
                         <div
                             ref={secondPartRef}
                             className='hideObject'
@@ -262,7 +265,7 @@ const Scene = React.forwardRef(({ nextFunc, _baseGeo, _geo, loadFunc }, ref) => 
 
                             <BaseImage
                                 ref={firstBGRef}
-                                url={"Questions/q2/q0.png"}
+                                url={"intro/intro.png"}
                             />
 
                             <div
@@ -273,7 +276,7 @@ const Scene = React.forwardRef(({ nextFunc, _baseGeo, _geo, loadFunc }, ref) => 
                                     , height: '100%',
                                     left: '0%',
                                     top: '0%',
-                                    WebkitMaskImage: 'url(' + prePathUrl() + 'images/Questions/q2/mask.png)',
+                                    WebkitMaskImage: 'url(' + prePathUrl() + 'images/questions/q2/m.png)',
                                     WebkitMaskSize: '100% 100%',
                                     WebkitMaskRepeat: "no-repeat",
                                     background: 'black',
@@ -288,7 +291,7 @@ const Scene = React.forwardRef(({ nextFunc, _baseGeo, _geo, loadFunc }, ref) => 
                                         ref={aniImageList[value - 1]}
                                         scale={1}
                                         posInfo={{ l: 0, t: 0 }}
-                                        url={"Questions/q2/q" + value + ".png"}
+                                        url={"questions/q2/" + value + ".png"}
                                     />
                                 )
                             }
@@ -302,7 +305,7 @@ const Scene = React.forwardRef(({ nextFunc, _baseGeo, _geo, loadFunc }, ref) => 
                                 }}>
                                 <BaseImage
                                     ref={aniImageList[3]}
-                                    url={"Questions/q2/q4.png"}
+                                    url={"questions/q2/4.png"}
                                 />
                             </div>
 
@@ -331,7 +334,7 @@ const Scene = React.forwardRef(({ nextFunc, _baseGeo, _geo, loadFunc }, ref) => 
                                             top: '-32%'
                                         }}
                                         draggable={false}
-                                        src={prePathUrl() + 'images/buttons/Answer_Button.svg'}
+                                        src={prePathUrl() + 'images/buttons/answer_button.svg'}
                                     />
                                 </div>
                             </div>

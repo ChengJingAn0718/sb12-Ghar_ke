@@ -4,10 +4,7 @@ import BaseImage from '../components/BaseImage';
 import { UserContext } from '../components/BaseShot';
 import { getAudioPath, prePathUrl, setPrimaryAudio, setRepeatAudio, setRepeatType, startRepeatAudio, stopRepeatAudio } from "../components/CommonFunctions";
 
-let randomList = []
 let answerList = []
-
-let optionList = [0, 1, 0, 1]
 let optionType = 0;
 
 const iconMovePosList = [
@@ -23,35 +20,16 @@ const iconMovePosList = [
 ]
 
 
-const posInfoList = {
-    icon: [
-        { sPos: 0.022, wGap: 0.25 },
-        { sPos: 0.12, wGap: 0.3 },
-    ],
-    base: [
-        { sPos: 0.07, wGap: 0.28 },
-        { sPos: 0.20, wGap: 0.32 },
-    ],
-    text: [
-        { sPos: 0.1, wGap: 0.28 },
-        { sPos: 0.23, wGap: 0.32 },
-    ],
-    clickDev: [
-        { sPos: 16, wGap: 25.5 },
-        { sPos: 26, wGap: 31 },
-    ]
-}
-
 let doneList = []
 let correctNum = 0
 
 
 const optionLetterList = [
-    'Q1_01A', 'Q1_02A', 'Q1_03A'
+    'q1_01a', 'q1_02a', 'q1_03a'
 ]
 
 const iconList = [
-    'Q1_01', 'Q1_02', 'Q1_03'
+    'q1_01', 'q1_02', 'q1_03'
 ]
 
 let timerList = []
@@ -65,13 +43,10 @@ const Scene = React.forwardRef(({ nextFunc, clickedFunc, _geo }, ref) => {
     const baseRefList = [useRef(), useRef(), useRef()]
     const imgRefList = [useRef(), useRef(), useRef()]
 
-    const [stepCount, setStepCount] = useState(0)
     const wordPath = ['24', '25', '26']
-
 
     useEffect(() => {
         return () => {
-            randomList = []
             answerList = []
             doneList = []
             optionType = 0;
@@ -81,8 +56,8 @@ const Scene = React.forwardRef(({ nextFunc, clickedFunc, _geo }, ref) => {
 
     React.useImperativeHandle(ref, () => ({
         startScene: () => {
-            audioList.bodyAudio1.src = getAudioPath('questions/Q1', '22')
-            audioList.bodyAudio2.src = getAudioPath('questions/Q1', wordPath[answerList[0]])
+            audioList.bodyAudio1.src = getAudioPath('questions/q1', '22')
+            audioList.bodyAudio2.src = getAudioPath('questions/q1', wordPath[0])
 
             setPrimaryAudio(audioList.bodyAudio2)
             setRepeatAudio(audioList.commonAudio1)
@@ -139,26 +114,10 @@ const Scene = React.forwardRef(({ nextFunc, clickedFunc, _geo }, ref) => {
 
     const getRandomList = () => {
 
-        randomList = []
         answerList = []
 
         let needLength = optionType == 0 ? 3 : 2;
-
-
-        while (randomList.length != needLength) {
-            let randomNumber = Math.floor(Math.random() * 3);
-            if (!doneList.includes(randomNumber)) {
-                randomList.push(randomNumber)
-                doneList.push(randomNumber)
-            }
-
-        }
-        while (answerList.length != needLength) {
-            let randomNumber = Math.floor(Math.random() * needLength);
-            if (!answerList.includes(randomNumber)) {
-                answerList.push(randomNumber)
-            }
-        }
+   
 
         const defaultRandomList = [
             [
@@ -179,10 +138,12 @@ const Scene = React.forwardRef(({ nextFunc, clickedFunc, _geo }, ref) => {
         let randomNumber = Math.floor(Math.random() * defaultRandomList[currentNum].length);
 
         answerList = defaultRandomList[currentNum][randomNumber]
+
+        console.log(answerList)
     }
 
     const judgeFunc = (num) => {
-        if (randomList[num] == answerList[correctNum]) {
+        if (correctNum == answerList[num]) {
             parentObject.current.style.pointerEvents = 'none'
             //correct function...
             clickRefList[num].current.style.pointerEvents = 'none'
@@ -191,8 +152,8 @@ const Scene = React.forwardRef(({ nextFunc, clickedFunc, _geo }, ref) => {
             })
             correctNum++
 
-            if (correctNum < randomList.length) {
-                audioList.bodyAudio2.src = getAudioPath('questions/Q1', wordPath[answerList[correctNum]])
+            if (correctNum < answerList.length) {
+                audioList.bodyAudio2.src = getAudioPath('questions/q1', wordPath[correctNum])
                 timerList[1] = setTimeout(() => {
                     audioList.bodyAudio2.play();
                     timerList[2] = setTimeout(() => {
@@ -257,7 +218,7 @@ const Scene = React.forwardRef(({ nextFunc, clickedFunc, _geo }, ref) => {
         >
 
             {
-                randomList.map((value, index) =>
+                answerList.map((value, index) =>
                     <BaseImage
                         ref={imgRefList[index]}
                         key={index}
@@ -269,13 +230,11 @@ const Scene = React.forwardRef(({ nextFunc, clickedFunc, _geo }, ref) => {
                         }}
                         style={{ transform: 'scale(0.9)' }}
                         className={index == 0 ? '' : 'hideObject'}
-                        url={"Questions/Q1/" + optionLetterList[answerList[index]] + ".png"}
+                        url={"questions/q1/" + optionLetterList[index] + ".png"}
                     />)}
 
-
-            {/* icons... */}
             {
-                randomList.map((value, index) =>
+                answerList.map((value, index) =>
                     <BaseImage
                         key={index}
                         ref={iconRefList[index]}
@@ -284,12 +243,12 @@ const Scene = React.forwardRef(({ nextFunc, clickedFunc, _geo }, ref) => {
                             l: 0.11 + 0.3 * index
                             , t: 0.17
                         }}
-                        url={"Questions/Q1/" + iconList[randomList[index]] + ".png"}
+                        url={"questions/q1/" + iconList[answerList[index]] + ".png"}
                     />)
             }
 
             {
-                randomList.map((value, index) =>
+                answerList.map((value, index) =>
                     <div
                         ref={clickRefList[index]}
                         key={index}

@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useContext, useState } from 'react';
 import "../stylesheets/styles.css";
 import BaseImage from '../components/BaseImage';
 import { UserContext } from '../components/BaseShot';
-import { prePathUrl, getAudioPath, setRepeatAudio, startRepeatAudio, setRepeatType, stopRepeatAudio } from "../components/CommonFunctions";
+import { prePathUrl, getAudioPath, setRepeatAudio, startRepeatAudio, setRepeatType, stopRepeatAudio, setExtraVolume } from "../components/CommonFunctions";
 import { textInfoList, iconList, gapList } from "../components/CommonVarariant"
 
 
@@ -203,6 +203,10 @@ const Scene = React.forwardRef(({ nextFunc, _baseGeo, _geo }, ref) => {
             isEffectPassed = true;
 
             clickedList = []
+
+            for (let i = 0; i < 13; i++)
+                setExtraVolume(audioList[i], 2)
+            setExtraVolume(audioList.commonAudio3, 2)
         },
         sceneEnd: () => {
             setSceneLoad(false)
@@ -247,7 +251,7 @@ const Scene = React.forwardRef(({ nextFunc, _baseGeo, _geo }, ref) => {
                             width={"100%"}
                             draggable={false}
                             onLoad={loadImage}
-                            src={prePathUrl() + 'images/Words/Title.png'}
+                            src={prePathUrl() + 'images/words/title.png'}
                         />
                     </div>
 
@@ -303,7 +307,7 @@ const Scene = React.forwardRef(({ nextFunc, _baseGeo, _geo }, ref) => {
                                                     left: (0.082 - textInfoList[index].l) * _geo.width,
                                                     top: _geo.height * (0.03 - textInfoList[index].t)
                                                 }}
-                                                src={prePathUrl() + "images/Words/set" + returnSetName(index) + "/SB12_SI_" + textInfoList[index].path + ".png"}
+                                                src={prePathUrl() + "images/words/set" + returnSetName(index) + "/" + textInfoList[index].path + "a.png"}
 
                                             />
                                         </div>
@@ -318,7 +322,7 @@ const Scene = React.forwardRef(({ nextFunc, _baseGeo, _geo }, ref) => {
                                             top: _geo.height * (0.03 + gapList[index].y)
                                         }}
                                         onLoad={index < wordGround[0] ? loadImage : null}
-                                        src={prePathUrl() + "images/Words/set" + returnSetName(index) + "/SB12_SI_" + iconList[index] + ".png"}
+                                        src={prePathUrl() + "images/words/set" + returnSetName(index) + "/" + iconList[index] + ".png"}
                                     />
                                     <div
                                         ref={clickRefList[index]}

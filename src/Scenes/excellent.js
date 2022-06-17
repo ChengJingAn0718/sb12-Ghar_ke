@@ -1,8 +1,8 @@
 import React, { useContext, useRef, useEffect } from 'react';
 import "../stylesheets/styles.css";
 import { UserContext } from "../components/BaseShot"
-import {  getAudioPath, setRepeatAudio, startRepeatAudio, stopRepeatAudio } from "../components/CommonFunctions"
-import { prePathUrl , setRepeatType} from "../components/CommonFunctions";
+import { getAudioPath, setExtraVolume, setRepeatAudio, startRepeatAudio, stopRepeatAudio } from "../components/CommonFunctions"
+import { prePathUrl, setRepeatType } from "../components/CommonFunctions";
 
 let timerList = []
 
@@ -16,6 +16,8 @@ export default function Scene({ nextFunc, _geo, _baseGeo }) {
         setRepeatAudio(audioList.replayAudio)
 
         setRepeatType(2)
+        setExtraVolume(audioList.replayAudio, 1.5)
+
 
         timerList[0] = setTimeout(() => {
 
