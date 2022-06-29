@@ -37,7 +37,6 @@ const App = React.forwardRef(({ geo, _startTransition, baseGeo, bgLoaded }, ref)
       sceneList[1].current.sceneLoad()
       sceneList[0].current.sceneLoad()
 
-
       return () => {
       }
     }, []
@@ -93,6 +92,9 @@ const App = React.forwardRef(({ geo, _startTransition, baseGeo, bgLoaded }, ref)
   function goHome() {
     setGameFinished(false)
     currentSceneNum = 0
+
+    audioList.backAudio.pause()
+    audioList.backAudio.currentTime = 0;
 
     setTimeout(() => {
       sceneList[1].current.sceneLoad()

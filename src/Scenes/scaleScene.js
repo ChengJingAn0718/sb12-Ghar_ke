@@ -175,9 +175,11 @@ const Scene = React.forwardRef(({ nextFunc, _baseGeo, loadFunc, _startTransition
 
             baseObject.current.className = 'aniObject'
 
-            setExtraVolume(audioList.bodyAudio1, 3)
-            setExtraVolume(audioList.bodyAudio2, 3)
-            setExtraVolume(audioList.bodyAudio3, 3)
+            // 3 to 6
+            
+            setExtraVolume(audioList.bodyAudio1, 6)
+            setExtraVolume(audioList.bodyAudio2, 6)
+            setExtraVolume(audioList.bodyAudio3, 6)
             
             setTimeout(() => {
 

@@ -46,8 +46,8 @@ const Scene = React.forwardRef(({ nextFunc, _baseGeo, _geo, loadFunc }, ref) => 
             optionRef.current.startScene()
             setRepeatType(1)
 
-            setExtraVolume(audioList.commonAudio2, 3)
-            setExtraVolume(audioList.commonAudio1, 3)
+            setExtraVolume(audioList.commonAudio2, 6)
+            setExtraVolume(audioList.commonAudio1, 6)
 
         },
         sceneEnd: () => {
@@ -81,12 +81,13 @@ const Scene = React.forwardRef(({ nextFunc, _baseGeo, _geo, loadFunc }, ref) => 
 
     const showControlFunc = () => {
 
-        blackWhiteObject.current.style.WebkitMaskImage = 'url("' + prePathUrl() + 'images/questions/q' + (stepCount + 3) + '/m.png")'
-
-        aniImageList.map((image, index) => {
-            if (index < 3)
-                image.current.setUrl('questions/q' + (stepCount + 3) + '/' + (index + 1) + '.png')
-        })
+        if (stepCount < 6) {
+            blackWhiteObject.current.style.WebkitMaskImage = 'url("' + prePathUrl() + 'images/questions/q' + (stepCount + 3) + '/m.png")'
+            aniImageList.map((image, index) => {
+                if (index < 3)
+                    image.current.setUrl('questions/q' + (stepCount + 3) + '/' + (index + 1) + '.png')
+            })
+        }
 
         buttonRefs.current.className = 'appear'
 

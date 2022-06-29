@@ -31,11 +31,11 @@ const posInfoList = [
 
     { x: 2, y: 40 },
     { x: 36, y: 40 },
-    { x: 68, y: 40, m: true },
+    { x: 70, y: 40, m: true },
 
     { x: 2, y: 70 },
     { x: 36, y: 70 },
-    { x: 68, y: 70, m: true },
+    { x: 70, y: 70, m: true },
 ]
 
 let doneCount = 0
@@ -128,7 +128,11 @@ const Scene = React.forwardRef(({ nextFunc, _baseGeo, _geo }, ref) => {
 
         clickedList.push(index)
 
-        audioList[index].play();
+        setExtraVolume(audioList[index], 6)
+        setTimeout(() => {
+            audioList[index].play();
+        }, 50);
+
         if (clickedList.length == doneCount + wordGround[stepCount]) {
             setTimeout(() => {
                 if (stepCount != wordGround.length - 1)
@@ -204,9 +208,8 @@ const Scene = React.forwardRef(({ nextFunc, _baseGeo, _geo }, ref) => {
 
             clickedList = []
 
-            for (let i = 0; i < 13; i++)
-                setExtraVolume(audioList[i], 3)
-            setExtraVolume(audioList.commonAudio3, 3)
+
+            setExtraVolume(audioList.commonAudio3, 6)
         },
         sceneEnd: () => {
             setSceneLoad(false)

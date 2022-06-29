@@ -6,8 +6,6 @@ import loadSound from "../utils/loadSound"
 import { prePathUrl } from "./CommonFunctions";
 import { LoadingCircleBar } from "./CommonButtons"
 
-var oldBackgroundImage = 'SB_37_Stage_BG_2';
-var _isBackSoundPlaying = true;
 
 const animationColorList = [
     ['#51c9b5', '#cc55d9', '#f55185'],
@@ -18,21 +16,21 @@ const animationColorList = [
     ['#51c9b5', '#cc55d9', '#dfeb88']
 ]
 
-let titleAudio = new loadSound('Introduction/Intro 1');
+let titleAudio = new loadSound('intro/01');
 
 let clapAudio = new loadSound('clap', true);
-let backAudio = new loadSound('bMusic', true);
+let backAudio = new loadSound('bmusic', true);
 let yeahAudio = new loadSound('yeah', true);
 let buzzAudio = new loadSound('buzz', true);
 let tingAudio = new loadSound('ting', true);
 let wooAudio = new loadSound('woo', true);
-let replayAudio = new loadSound('replayAudio', true);
+let replayAudio = new loadSound('replayaudio', true);
 let successAudio = new loadSound('success', true);
 
 
-let bodyAudio1 = new loadSound('Introduction/Intro 2');
-let bodyAudio2 = new loadSound('Introduction/Intro 3');
-let bodyAudio3 = new loadSound('Introduction/Intro 3');
+let bodyAudio1 = new loadSound('intro/01');
+let bodyAudio2 = new loadSound('intro/01');
+let bodyAudio3 = new loadSound('intro/01');
 
 let commonAudio1 = new loadSound('common/common1');
 let commonAudio2 = new loadSound('common/common2');
@@ -40,9 +38,9 @@ let commonAudio3 = new loadSound('common/common3');
 
 let subAudioList = []
 const audioNameList = [
-    '54', '64_darwaza', '58_1_Khidhiya', '58_2_Pakshi', '58_Badal', '59',
-    '60_Bagicha', '60_2_Maali', '61_Akhbar', '61_Jhula', '62_dada_dadi',
-    '64_Dudhwala', '50_Badminton'
+    '54', '64_darwaza', '58_1_khidhiya', '58_2_pakshi', '58_badal', '59',
+    '60_bagicha', '60_2_maali', '61_akhbar', '61_jhula', '62_dada_dadi',
+    '64_dudhwala', '50_badminton'
 ]
 
 Array.from(Array(13).keys()).map(value => {
