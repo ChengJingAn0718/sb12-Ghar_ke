@@ -81,7 +81,7 @@ const Scene = React.forwardRef(({ nextFunc, _baseGeo, _geo, loadFunc }, ref) => 
 
     const showControlFunc = () => {
 
-        if (stepCount < 6) {
+        if (stepCount < 7) {
             blackWhiteObject.current.style.WebkitMaskImage = 'url("' + prePathUrl() + 'images/questions/q' + (stepCount + 3) + '/m.png")'
             aniImageList.map((image, index) => {
                 if (index < 3)
